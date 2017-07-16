@@ -46,8 +46,8 @@ public class Firebase {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 insertAuthorCount++;
-                if(insertAuthorCount== ITERACTIONS){
-                    logEvent("Insert "+ ITERACTIONS +" Authors", initialTimeAuthorCount, new Date());
+                if(insertAuthorCount== ITERATIONS){
+                    logEvent("Insert "+ ITERATIONS +" Authors", initialTimeAuthorCount, new Date());
                 }
             }
         });
@@ -64,8 +64,8 @@ public class Firebase {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 updateAuthorCount++;
-                if(updateAuthorCount== ITERACTIONS){
-                    logEvent("Update "+ ITERACTIONS +" Authors", initialTimeUpdateAuthor, new Date());
+                if(updateAuthorCount== ITERATIONS){
+                    logEvent("Update "+ ITERATIONS +" Authors", initialTimeUpdateAuthor, new Date());
                     selectCount();
                 }
             }
@@ -114,9 +114,9 @@ public class Firebase {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 deleteAuthorsAndPostsCount++;
-                if(deleteAuthorsAndPostsCount== ITERACTIONS){
+                if(deleteAuthorsAndPostsCount== ITERATIONS){
                     deleteAuthorsAndPostsCount = 0;
-                    logEvent("Delete "+ ITERACTIONS +" Authors with Posts", initialTimeDeleteAuthorsAndPosts, new Date());
+                    logEvent("Delete "+ ITERATIONS +" Authors with Posts", initialTimeDeleteAuthorsAndPosts, new Date());
                     selectCount();
                 }
             }
@@ -134,8 +134,8 @@ public class Firebase {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 insertPostCount++;
-                if(insertPostCount== ITERACTIONS){
-                    logEvent("Insert "+ ITERACTIONS +" Posts", initialTimePostCount, new Date());
+                if(insertPostCount== ITERATIONS){
+                    logEvent("Insert "+ ITERATIONS +" Posts", initialTimePostCount, new Date());
                     updateData();
                 }
             }
@@ -154,8 +154,8 @@ public class Firebase {
                     result.add(post);
                 }
                 searchPostsByAuthorCount++;
-                if(searchPostsByAuthorCount== ITERACTIONS){
-                    logEvent("Search Posts by Authors ("+ ITERACTIONS +")", initialTimeSearchPostsByAuthor, new Date());
+                if(searchPostsByAuthorCount== ITERATIONS){
+                    logEvent("Search Posts by Authors ("+ ITERATIONS +")", initialTimeSearchPostsByAuthor, new Date());
                 }
             }
 
@@ -174,8 +174,8 @@ public class Firebase {
                     child.getValue(Post.class);
                 }
                 searchPostsByIdCount++;
-                if(searchPostsByIdCount== ITERACTIONS){
-                    logEvent("Search Posts by Id ("+ ITERACTIONS +")", initialTimeSearchPostsByID, new Date());
+                if(searchPostsByIdCount== ITERATIONS){
+                    logEvent("Search Posts by Id ("+ ITERATIONS +")", initialTimeSearchPostsByID, new Date());
                     deleteData();
                 }
             }
@@ -197,8 +197,8 @@ public class Firebase {
                     result.add(post);
                 }
                 searchPostsOrderByDateCount++;
-                if(searchPostsOrderByDateCount== ITERACTIONS){
-                    logEvent("Search All Posts order by Date ("+ ITERACTIONS +")", initialTimeSearchPostsOrderByDate, new Date());
+                if(searchPostsOrderByDateCount== ITERATIONS){
+                    logEvent("Search All Posts order by Date ("+ ITERATIONS +")", initialTimeSearchPostsOrderByDate, new Date());
                 }
             }
 
@@ -218,8 +218,8 @@ public class Firebase {
                 long count = dataSnapshot.getChildrenCount();
 
                 postCountIteractions++;
-                if(postCountIteractions == ITERACTIONS){
-                    logEvent("Select count Posts ("+ ITERACTIONS +"x) ["+count+"]", initialTimeSelectCountPosts, new Date());
+                if(postCountIteractions == ITERATIONS){
+                    logEvent("Select count Posts ("+ ITERATIONS +"x) ["+count+"]", initialTimeSelectCountPosts, new Date());
                 }
             }
 
@@ -237,8 +237,8 @@ public class Firebase {
                 long count = dataSnapshot.getChildrenCount();
 
                 authorCountIteractions++;
-                if(authorCountIteractions == ITERACTIONS){
-                    logEvent("Select count Authors ("+ ITERACTIONS +"x) ["+count+"]", initialTimeSelectCountAuthors, new Date());
+                if(authorCountIteractions == ITERATIONS){
+                    logEvent("Select count Authors ("+ ITERATIONS +"x) ["+count+"]", initialTimeSelectCountAuthors, new Date());
                     if(countIndex==0){
                         countIndex++;
                         searchData();
@@ -255,7 +255,7 @@ public class Firebase {
     }
 
     //----- Replicate Analysis code because the Firebase is event oriented --------//
-    public static final int ITERACTIONS = Analysis.ITERACTIONS;
+    public static final int ITERATIONS = Analysis.ITERATIONS;
     public static final String LOG_TAG = Analysis.LOG_TAG;
     private Date initialTimeUpdateAuthor;
     private Date initialTimeSearchPostsByAuthor;
@@ -294,44 +294,44 @@ public class Firebase {
     private void selectCount() {
         initialTimeSelectCountPosts = new Date();
         postCountIteractions = 0;
-        for (int i = 0; i < ITERACTIONS; i++) {
+        for (int i = 0; i < ITERATIONS; i++) {
             selectCountPosts();
         }
 
         initialTimeSelectCountAuthors = new Date();
         authorCountIteractions = 0;
-        for (int i = 0; i < ITERACTIONS; i++) {
+        for (int i = 0; i < ITERATIONS; i++) {
             selectCountAuthors();
         }
     }
 
     private void deleteData() {
         initialTimeDeleteAuthorsAndPosts = new Date();
-        for (int i = 0; i < ITERACTIONS; i++) {
+        for (int i = 0; i < ITERATIONS; i++) {
             deleteAuthorAndYourPosts(updatedAuthors.get(i));
         }
     }
 
     private void searchData() {
         initialTimeSearchPostsByAuthor = new Date();
-        for (int i = 0; i < ITERACTIONS; i++) {
+        for (int i = 0; i < ITERATIONS; i++) {
             searchPostsByAuthor(authors.get(i));
         }
 
         initialTimeSearchPostsByID = new Date();
-        for (int i = 0; i < ITERACTIONS; i++) {
+        for (int i = 0; i < ITERATIONS; i++) {
             searchPostById(posts.get(i));
         }
 
         initialTimeSearchPostsOrderByDate = new Date();
-        for (int i = 0; i < ITERACTIONS; i++) {
+        for (int i = 0; i < ITERATIONS; i++) {
             searchAllPostsOrderByDate();
         }
     }
 
     private void updateData() {
         initialTimeUpdateAuthor = new Date();
-        for (int i = 0; i < ITERACTIONS; i++) {
+        for (int i = 0; i < ITERATIONS; i++) {
             Author author = authors.get(i);
             author.setName("nameupdated"+i);
             updateAuthorAndYourPosts(author);
@@ -341,7 +341,7 @@ public class Firebase {
 
     private void insertData() {
         initialTimeAuthorCount = new Date();
-        for (int i = 0; i < ITERACTIONS; i++) {
+        for (int i = 0; i < ITERATIONS; i++) {
             Author author = new Author();
             author.setKey(""+i);
             author.setName("name"+i);
@@ -351,7 +351,7 @@ public class Firebase {
         }
 
         initialTimePostCount = new Date();
-        for (int i = 0; i < ITERACTIONS; i++) {
+        for (int i = 0; i < ITERATIONS; i++) {
             Post post = new Post();
             post.setKey(""+i);
             post.setAuthor(authors.get(i));
