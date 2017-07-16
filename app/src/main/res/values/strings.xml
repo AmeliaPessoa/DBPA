@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Database Performance Analysis</string>
+    <string name="check_log">Running Android database performance analysis... Check the log for more details.</string>
+</resources>
