@@ -270,17 +270,7 @@ public class Firebase {
 
         insertData(); //Insert Authors and Posts
 
-        //updateData(); //Update the Authors name
-
-        //selectCount(); //Count Author and Posts
-
-        //searchData(); //Search Posts by Author, Posts by id, All Posts order by date
-
-        //deleteData(); //Delete Authors and your Posts
-
-        //selectCount(); //Count Author and Posts
-
-        //close();
+        //Others methods are called when the previous is done
     }
 
     private Integer countIndex = 0;
