@@ -1,10 +1,11 @@
 package ap.databaseperformanceanalysis;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import ap.databaseperformanceanalysis.databases.CouchbaseLite;
 import ap.databaseperformanceanalysis.databases.Firebase;
+import ap.databaseperformanceanalysis.databases.Realm;
 import ap.databaseperformanceanalysis.databases.SQLite;
 import ap.databaseperformanceanalysis.databases.SnappyDB;
 import ap.databaseperformanceanalysis.databases.iBoxDB;
@@ -21,5 +22,6 @@ public class MainActivity extends AppCompatActivity {
         //new Firebase().run();
         new SnappyDB(this).run();
         new SQLite(this).run();
+        new Realm(this).run();
     }
 }

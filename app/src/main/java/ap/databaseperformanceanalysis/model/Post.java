@@ -4,9 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
-public class Post {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Post extends RealmObject {
 
     //Needs to be public to iBoxDB
+    @PrimaryKey
     public String key;
     public String subject;
     public String title;
