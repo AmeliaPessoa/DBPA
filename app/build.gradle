@@ -48,3 +48,4 @@ dependencies {
     compile 'com.esotericsoftware.kryo:kryo:2.24.0'
 }
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'realm-android'
