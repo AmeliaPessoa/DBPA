@@ -1,8 +1,14 @@
 package ap.databaseperformanceanalysis.model;
 
-public class Author {
+import io.realm.RealmModel;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
+
+@RealmClass
+public class Author implements RealmModel {
 
     //Needs to be public to iBoxDB
+    @PrimaryKey
     public String key;//Needs to be a string to firebase
     public String name;
     public String biography;

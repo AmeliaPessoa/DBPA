@@ -9,6 +9,7 @@ This analysis considers the following databases:
 3. [Couchbase Lite](https://www.couchbase.com/products/mobile)
 4. [iBoxDB](http://www.iboxdb.com/)
 5. [SnappyDB](https://github.com/nhachicha/SnappyDB)
+6. [Realm](https://github.com/realm/realm-java)
 
 The operations are done by the `Analysis` class except by the Firebase class because it is event oriented and the `Analysis` class expects returns.
 
